@@ -5,7 +5,7 @@ public class Modificador {
     public Modificador(int mod){
         this.mod = mod;
     }
-    public int ponto( int mod){
+    public int ponto(){
         int ponto = 0;
         if(mod%2 == 0){
             ponto = (mod/2)-5;
