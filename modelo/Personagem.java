@@ -1,4 +1,5 @@
 package DD5e.modelo;
+import java.util.Arrays;
 public class Personagem {
     
     //Habilidades
@@ -24,6 +25,35 @@ public class Personagem {
                 sobrevivencia;
     private double xp;
     private int vida, vidaTemp;
+
+
+
+    public Personagem(int str, int dex, int cons, int inte, int wis, int cha) {
+        this.str = str;
+        this.dex = dex;
+        this.cons = cons;
+        this.inte = inte;
+        this.wis = wis;
+        this.cha = cha;
+        acrobacia = modificador(dex);
+        arcanismo = modificador(inte);
+        atletismo = modificador(str);
+        atuacao = modificador(cha);
+        blefar = modificador(cha);
+        furtividade = modificador(dex);
+        historia = modificador(inte);
+        intimidacao = modificador(cha);
+        intuicao = modificador(wis);
+        investigacao = modificador(inte);
+        lidarComAnimais = modificador(wis);
+        medicina = modificador(wis);
+        natureza = modificador(inte);
+        percepcao = modificador(wis);
+        persuasao = modificador(cha);
+        prestidigitacao = modificador(dex);
+        religiao = modificador(inte);
+        sobrevivencia = modificador(wis);
+    }
 
     public int getStr() {
         return this.str;
@@ -241,7 +271,7 @@ public class Personagem {
         this.vidaTemp = vidaTemp;
     }
 
-    private int modificador(int atributo){
+    public int modificador(int atributo){
         int ponto = 0;
         if(atributo%2 == 0){
             ponto = (atributo/2)-5;
@@ -249,5 +279,17 @@ public class Personagem {
             ponto = ((atributo-1)/2)-5;
         }
         return ponto;
+    }
+
+    public int[] rollDices(){
+        Dado dado = new Dado(6, 1);
+        int dados[] = {0,0,0,0};
+        dados[0] = dado.roll();
+        dados[1] = dado.roll();
+        dados[2] = dado.roll();
+        dados[3] = dado.roll();
+        Arrays.sort(dados);
+        System.out.println("1: " + dados[0] + ", 2: " + dados[1] + ", 3: " + dados[2] +", 4: " + dados[3]);
+        return dados;
     }
 }
