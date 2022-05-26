@@ -8,7 +8,9 @@ public class Dado {
     }
     
     public int roll(){
-        int dice=(int)((Math.random()*6+1)* quantidade);
+        int dice = 0;
+        for(int count= 0; count<quantidade ; count++)
+            dice = dice + (int)((Math.random()*lados+1));
         return dice;
       }
 }
